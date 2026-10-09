@@ -4,7 +4,7 @@ A lightweight GenAI workspace built with **Streamlit**, **LangChain**, and **Ope
 
 ## Application Preview
 
-![Your AI Assistance — GenAI Prompt Playground](images/GenAI_APP_UI.png)
+![Your AI Assistance — GenAI Prompt Playground](images/genai_app_view.png)
 
 ## Documentation Navigation
 

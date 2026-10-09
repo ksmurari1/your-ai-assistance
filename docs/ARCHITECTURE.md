@@ -59,36 +59,35 @@ flowchart LR
 
 ## 4. Detailed request sequence
 
+
 ```mermaid
 sequenceDiagram
     actor User
     participant UI as Streamlit app.py
     participant Guard as guardrails.py
-    participant Mod as OpenAI Moderation API
-    participant Builder as breakfast_module.py
+    participant Module as breakfast_module.py
     participant Service as llm_service.py
-    participant Model as ChatOpenAI
+    participant LLM as LangChain ChatOpenAI
 
     User->>UI: Enter task and select output format
-    UI->>Guard: Check task + active system prompt
-    Guard->>Mod: Submit moderation request
-    Mod-->>Guard: Flag and category results
-    alt Request is blocked
-        Guard-->>UI: allowed = false
-        UI-->>User: Show guardrail block; do not generate
+    UI->>Guard: Check task and active RTCFR prompt
+
+    alt Request is blocked or moderation fails
+        Guard-->>UI: Return blocked status or error
+        UI-->>User: Display safety message
     else Request is allowed
-        Guard-->>UI: allowed = true
+        Guard-->>UI: Allow generation
+        UI->>Module: Build system and human messages
+        Module-->>UI: Return LangChain messages
         UI->>Service: Generate response
-        Service->>Builder: Build messages
-        Builder-->>Service: SystemMessage + HumanMessage
-        Service->>Model: Invoke model
-        Model-->>Service: AIMessage
-        Service-->>UI: Response content
-        UI->>Builder: Validate selected format
-        Builder-->>UI: Validation result
+        Service->>LLM: Send messages
+        LLM-->>Service: Return generated response
+        Service-->>UI: Return response
+        UI->>UI: Validate output format
         UI-->>User: Display response and optional download
     end
 ```
+
 
 ## 5. Messages and prompt flow
 
