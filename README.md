@@ -2,6 +2,31 @@
 
 A lightweight GenAI workspace built with **Streamlit**, **LangChain**, and **OpenAI**. It started as a healthy-breakfast-ideas exercise and was generalized into a reusable playground for tasks across different topics.
 
+## Application Preview
+
+![Your AI Assistance — GenAI Prompt Playground](images/GenAI_APP_UI.png)
+
+## Documentation Navigation
+
+- [Features](#features)
+- [Architecture at a glance](#architecture-at-a-glance)
+- [Project structure](#project-structure)
+- [Requirements](#requirements)
+- [Setup on Windows](#setup-on-windows-command-prompt)
+- [How to use the app](#how-to-use-the-app)
+- [RTCFR framework](#rtcfr-framework)
+- [Request lifecycle](#request-lifecycle)
+- [Cost notes](#cost-notes)
+- [Git and secret hygiene](#git-and-secret-hygiene)
+- [Known scope and limitations](#known-scope-and-limitations)
+- [Learning outcomes](#learning-outcomes)
+
+### Detailed Documentation
+
+- [System Architecture](docs/ARCHITECTURE.md) — component responsibilities and architecture details.
+- [Project Flow](docs/PROJECT_FLOW.md) — end-to-end workflow and Mermaid flow diagram.
+- [GenAI Prompt Playground Comparison (PDF)](docs/GenAI%20Prompt%20Playground_Comparison.pdf) — visual comparison reference.
+
 ## Features
 
 - **Free-text task input:** try breakfast ideas, study plans, sports explanations, hotel-selection criteria, and other general tasks.
@@ -42,7 +67,7 @@ flowchart TD
     EDITOR --> P
 ```
 
-See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for component responsibilities and [`docs/PROJECT_FLOW.md`](docs/PROJECT_FLOW.md) for the standalone Mermaid flow.
+See [System Architecture](docs/ARCHITECTURE.md) for component responsibilities, [Project Flow](docs/PROJECT_FLOW.md) for the standalone Mermaid flow, and the [Comparison PDF](docs/GenAI%20Prompt%20Playground_Comparison.pdf) for the visual comparison reference.
 
 ## Project structure
 
@@ -60,13 +85,15 @@ your-ai-assistance/
 ├── .streamlit/
 │   └── config.toml            # Optional Streamlit configuration
 ├── tests/                     # Project tests
-├── images/                    # Supporting images, if referenced by docs/app
+├── images/
+│   └── GenAI_APP_UI.png       # Application UI screenshot
 └── docs/
     ├── ARCHITECTURE.md
-    └── PROJECT_FLOW.md
+    ├── PROJECT_FLOW.md
+    └── GenAI Prompt Playground_Comparison.pdf
 ```
 
-The exact contents of `tests/`, `images/`, and `.streamlit/config.toml` depend on the local project. Commit only relevant, non-sensitive assets.
+The structure above shows the expected documentation assets. If your screenshot uses a different filename or extension, update the Markdown image path accordingly. Keep `.env` as a local-only file; it is shown above only to explain local configuration and must never be committed.
 
 ## Requirements
 
